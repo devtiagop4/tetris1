@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./main.css">
+
+  <title>Tretis</title>
+  <script type="module" src="./main.js"></script>
+</head>
+<body>
+  <main>
+    <div class="canvas-container">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <nav id="mobile-controls" class="mobile-controls" aria-label="Controles do jogo" hidden>
+      <button type="button" data-action="left" aria-label="Mover para a esquerda">◀</button>
+      <button type="button" data-action="rotate" aria-label="Girar peça">⟳</button>
+      <button type="button" data-action="right" aria-label="Mover para a direita">▶</button>
+      <button type="button" data-action="down" aria-label="Descer peça">▼</button>
+      <button type="button" data-action="drop" aria-label="Queda rápida">⤓</button>
+      <button type="button" data-action="hold" aria-label="Guardar peça">HOLD</button>
+      <button type="button" data-action="pause" aria-label="Pausar jogo">Ⅱ</button>
+    </nav>
+  </main>
+</body>
+</html>
