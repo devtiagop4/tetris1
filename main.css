@@ -58,12 +58,6 @@ body {
   transform: scale(0.97);
 }
 
-@media (hover: hover) and (min-width: 800px) {
-  .mobile-controls {
-    display: none;
-  }
-}
-
 @media (max-width: 600px) {
   body {
     padding: 6px;
@@ -78,12 +72,21 @@ body {
   }
 
   .mobile-controls {
+    position: relative;
+    z-index: 1;
     gap: 6px;
-    margin-top: 8px;
+    /* Aproxima os controles da parte inferior da arena */
+    margin: clamp(-130px, -31vw, -90px) auto 12px;
   }
 
   .mobile-controls button {
     min-height: 48px;
     font-size: 17px;
+  }
+}
+
+@media (hover: hover) and (min-width: 800px) {
+  .mobile-controls {
+    display: none;
   }
 }
