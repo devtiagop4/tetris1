@@ -12,6 +12,7 @@ export default class Score {
     this.totalPoints += completedLines * completedLines;
 
     const newLevel = Math.floor(this.totalLines / 10) + 1;
+
     if (newLevel > this.level) {
       GameManager.levelUp(newLevel);
       this.level = newLevel;
@@ -25,23 +26,22 @@ export default class Score {
   draw() {
     const context = GameManager.context;
     const arena = GameManager.arena;
-    const squareSize = GameManager.config.squareSize;
 
     context.save();
-    context.fillStyle = "#252525";
-    context.strokeStyle = "#cfcfcf";
-    context.lineWidth = 4;
     context.textAlign = "center";
 
     if (GameManager.config.isMobile) {
       const x = 12;
-      const y = GameManager.config.height - 104;
+      const y = 8;
       const width = GameManager.config.width - 24;
-      const height = 92;
+      const height = 72;
       const columnWidth = width / 3;
 
+      context.fillStyle = "#252525";
+      context.strokeStyle = "#cfcfcf";
+      context.lineWidth = 3;
       context.beginPath();
-      context.roundRect(x, y, width, height, 14);
+      context.roundRect(x, y, width, height, 12);
       context.fill();
       context.stroke();
 
@@ -55,22 +55,26 @@ export default class Score {
         const centerX = x + columnWidth * index + columnWidth / 2;
 
         context.fillStyle = "#ffffff";
-        context.font = "bold 15px sans-serif";
-        context.fillText(label, centerX, y + 32);
+        context.font = "bold 14px sans-serif";
+        context.fillText(label, centerX, y + 25);
 
-        context.font = "bold 21px sans-serif";
-        context.fillText(String(value), centerX, y + 65);
+        context.font = "bold 20px sans-serif";
+        context.fillText(String(value), centerX, y + 53);
       });
 
       context.restore();
       return;
     }
 
-    const y = arena.position.top + 190;
+    const squareSize = GameManager.config.squareSize;
     const width = 160;
     const height = 280;
     const x = arena.position.left - width - 40;
+    const y = arena.position.top + 190;
 
+    context.fillStyle = "#252525";
+    context.strokeStyle = "#cfcfcf";
+    context.lineWidth = 4;
     context.beginPath();
     context.roundRect(x, y, width, height, 18);
     context.fill();

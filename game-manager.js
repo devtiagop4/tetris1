@@ -124,9 +124,15 @@ export default class GameManager {
       GameManager._drawStartScreen();
     } else {
       GameManager.arena.draw();
-      GameManager.pieceHolder.draw();
+
+      // No celular, ocultamos os painéis HOLD e NEXT.
+      // No computador, eles continuam aparecendo.
+      if (!GameManager.config.isMobile) {
+        GameManager.pieceHolder.draw();
+        GameManager.nextPieceQueue.draw();
+      }
+
       GameManager.score.draw();
-      GameManager.nextPieceQueue.draw();
       GameManager.pauseScreen.draw();
       GameManager._drawPauseButton();
     }
@@ -136,9 +142,10 @@ export default class GameManager {
 
   static _drawPauseButton() {
     const context = GameManager.context;
+    const mobile = GameManager.config.isMobile;
     const button = {
       x: GameManager.config.width - 76,
-      y: 12,
+      y: mobile ? GameManager.arena.position.top - 42 : 12,
       width: 62,
       height: 36,
     };
