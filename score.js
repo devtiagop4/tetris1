@@ -26,25 +26,57 @@ export default class Score {
     const context = GameManager.context;
     const arena = GameManager.arena;
     const squareSize = GameManager.config.squareSize;
-    //const x = arena.position.left + GameManager.config.columns * squareSize + 14;
+
+    context.save();
+    context.fillStyle = "#252525";
+    context.strokeStyle = "#cfcfcf";
+    context.lineWidth = 4;
+    context.textAlign = "center";
+
+    if (GameManager.config.isMobile) {
+      const x = 12;
+      const y = GameManager.config.height - 104;
+      const width = GameManager.config.width - 24;
+      const height = 92;
+      const columnWidth = width / 3;
+
+      context.beginPath();
+      context.roundRect(x, y, width, height, 14);
+      context.fill();
+      context.stroke();
+
+      const items = [
+        ["SCORE", this.totalPoints],
+        ["LEVEL", this.level],
+        ["LINES", this.totalLines],
+      ];
+
+      items.forEach(([label, value], index) => {
+        const centerX = x + columnWidth * index + columnWidth / 2;
+
+        context.fillStyle = "#ffffff";
+        context.font = "bold 15px sans-serif";
+        context.fillText(label, centerX, y + 32);
+
+        context.font = "bold 21px sans-serif";
+        context.fillText(String(value), centerX, y + 65);
+      });
+
+      context.restore();
+      return;
+    }
+
     const y = arena.position.top + 190;
     const width = 160;
     const height = 280;
     const x = arena.position.left - width - 40;
 
-    context.save();
-
-    context.fillStyle = "#252525";
-    context.strokeStyle = "#cfcfcf";
-    context.lineWidth = 5;
     context.beginPath();
     context.roundRect(x, y, width, height, 18);
     context.fill();
     context.stroke();
 
-    context.textAlign = "center";
     context.fillStyle = "#ffffff";
-
     context.font = "bold 20px sans-serif";
     context.fillText("SCORE", x + width / 2, y + 35);
     context.font = "24px sans-serif";

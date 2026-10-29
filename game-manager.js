@@ -192,14 +192,12 @@ export default class GameManager {
       context.stroke();
     };
 
-    drawBlock(75, 90, 34, "#22d3ee");
-    drawBlock(110, 124, 34, "#3b82f6");
-    drawBlock(75, 158, 34, "#a855f7");
-    drawBlock(width - 110, 110, 34, "#facc15");
-    drawBlock(width - 145, 144, 34, "#f97316");
-    drawBlock(width - 110, 178, 34, "#22c55e");
-    drawBlock(105, height - 130, 34, "#ef4444");
-    drawBlock(width - 115, height - 145, 34, "#ec4899");
+    drawBlock(35, 90, 34, "#22d3ee");
+    drawBlock(70, 124, 34, "#3b82f6");
+    drawBlock(35, 158, 34, "#a855f7");
+    drawBlock(width - 70, 110, 34, "#facc15");
+    drawBlock(width - 105, 144, 34, "#f97316");
+    drawBlock(width - 70, 178, 34, "#22c55e");
 
     context.save();
     context.shadowColor = "rgba(0,0,0,0.45)";
@@ -275,17 +273,10 @@ export default class GameManager {
     const controlsX = panelX + 35;
     const controlsY = panelY + 285;
     const controlsWidth = panelWidth - 70;
-    const controlsHeight = 120;
 
     context.fillStyle = "#303541";
     context.beginPath();
-    context.roundRect(
-      controlsX,
-      controlsY,
-      controlsWidth,
-      controlsHeight,
-      12,
-    );
+    context.roundRect(controlsX, controlsY, controlsWidth, 120, 12);
     context.fill();
 
     context.fillStyle = "#ffffff";
