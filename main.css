@@ -17,45 +17,25 @@ body {
 }
 
 .canvas-container {
-  width: 100%;
+  position: relative;
+  width: min(100%, 960px);
   margin: 0 auto;
 }
 
 #canvas {
   display: block;
-  width: min(100%, 960px);
+  width: 100%;
   height: auto;
   margin: 0 auto;
   touch-action: manipulation;
 }
 
 .mobile-controls {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  width: min(100%, 420px);
-  margin: 12px auto 0;
+  display: none;
 }
 
 .mobile-controls[hidden] {
   display: none;
-}
-
-.mobile-controls button {
-  min-height: 50px;
-  border: 1px solid #aeb8d0;
-  border-radius: 10px;
-  background: #252b3b;
-  color: #ffffff;
-  font: bold 18px Arial, sans-serif;
-  touch-action: none;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.mobile-controls button:active {
-  background: #45516e;
-  transform: scale(0.97);
 }
 
 @media (max-width: 600px) {
@@ -64,29 +44,42 @@ body {
   }
 
   .canvas-container {
+    width: 100%;
     max-width: 420px;
   }
 
-  #canvas {
-    width: 100%;
-  }
-
-  .mobile-controls {
-    position: relative;
-    z-index: 1;
+  .mobile-controls:not([hidden]) {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 6px;
-    /* Aproxima os controles da parte inferior da arena */
-    margin: clamp(-130px, -31vw, -90px) auto 12px;
+    width: calc(100% - 24px);
   }
 
   .mobile-controls button {
-    min-height: 48px;
-    font-size: 17px;
+    min-height: 44px;
+    border: 1px solid #aeb8d0;
+    border-radius: 10px;
+    background: rgba(37, 43, 59, 0.94);
+    color: #ffffff;
+    font: bold 17px Arial, sans-serif;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .mobile-controls button:active {
+    background: #45516e;
+    transform: scale(0.97);
   }
 }
 
-@media (hover: hover) and (min-width: 800px) {
+@media (hover: hover) and (min-width: 601px) {
   .mobile-controls {
-    display: none;
+    display: none !important;
   }
 }
