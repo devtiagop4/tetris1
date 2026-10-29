@@ -76,7 +76,7 @@ body {
     z-index: 1;
     gap: 6px;
     /* Aproxima os controles da parte inferior da arena */
-    margin: clamp(-100px, -31vw, -80px) auto 12px;
+    margin: clamp(-130px, -31vw, -90px) auto 12px;
   }
 
   .mobile-controls button {
